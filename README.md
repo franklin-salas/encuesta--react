@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+- **preview**
+  
+ encuesta
+
+  ![preview img](/preview/encuesta.png)
+  
+  Resultados
+
+  ![preview img](/preview/graficos.png)
+  
 ## Available Scripts
 
 In the project directory, you can run:

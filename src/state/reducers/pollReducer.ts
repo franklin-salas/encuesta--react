@@ -84,8 +84,8 @@ export const PollReducer = produce((state: Poll, action: PollActions) : Poll => 
         }
         case "orderquestions": {
             const { source, destination } = action.payload;
-            const [question] = state.questions.splice(source, 1);
-            state.questions.splice(destination, 0, question);
+            const question = state.questions.splice(source, 1);
+            state.questions.splice(destination, 0, ...question);
             orderQuestions(state);
             state.errors = {};
             return state;

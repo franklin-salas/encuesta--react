@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { createPollReply, getPollWithQuestions } from "../../services/PollService";
 import { PollReplyDetail, Question, UserAnswer } from "../../types";
 import ReplyQuestion from "./ReplyQuestion";
@@ -130,7 +131,7 @@ const Poll:FC<PollProps> = ({ id }) => {
     return (
         <Container>
             <Row>
-                <Col sm="10" md="10" lg="8" className="mx-auto mt-5 mb-5">
+                <Col sm="10" md="10" lg="8" className="mx-auto mt-5 mb-2">
                     {
                         isPollAnswered &&
                         <div className="d-flex align-items-center flex-column poll-answered-container">
@@ -144,9 +145,10 @@ const Poll:FC<PollProps> = ({ id }) => {
                     {
                         poll && !isPollAnswered && <>
                             <h2>{ poll.content }</h2><hr></hr>
-                            <Form.Group className="mb-3" controlId="user">
-                                <Form.Label>Nombre</Form.Label>
-                                <Form.Control 
+                           
+                            <FloatingLabel className="mb-3" controlId="user" label="Nombre"> 
+                            {/* <Form.Group className="mb-3" controlId="user"> */}
+                            <Form.Control 
                                     value={user}
                                     onChange={e => setUser(e.target.value)}
                                     type="text"
@@ -156,15 +158,17 @@ const Poll:FC<PollProps> = ({ id }) => {
                                 <Form.Control.Feedback type="invalid">
                                     {errors.user}    
                                 </Form.Control.Feedback>                             
-                            </Form.Group>
+                            {/* </Form.Group> */}
+                            </FloatingLabel>
+                             
 
                             <div>
                                 { renderQuestions() }
                             </div>
 
 
-
-                            <Button type="submit" onClick={prepareForm}>
+                          
+                            <Button type="submit" onClick={prepareForm} className="mb-3">
                                 {sendingData ? <>
                                     <Spinner
                                         animation="border"
@@ -175,18 +179,23 @@ const Poll:FC<PollProps> = ({ id }) => {
                                     ></Spinner>&nbsp;
                                     <span>Enviando respuesta...</span>
                                 </>: 
-                                <>Responder encuesta</>
+                                <>Enviar Respuesta</>
                                 }
                             </Button>
+                            
+                        
+                        </>
+                    }
 
-                            {
-                                errors.allQuestionsAnswered && <Alert className="mt-4" variant="danger">
+                    
+                {
+                                errors.allQuestionsAnswered && <Alert className="mt-2" variant="danger">
                                     { errors.allQuestionsAnswered }
                                 </Alert>
                             }
-                        </>
-                    }
                 </Col>
+                
+
             </Row>
         </Container>
     );

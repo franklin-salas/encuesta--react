@@ -3,7 +3,7 @@ import { ChangeEventHandler, FC } from "react";
 interface SwitchProps {
     id: string,
     onChange: ChangeEventHandler<HTMLInputElement>,
-    label: String,
+    label: string,
     checked: boolean
 }
 

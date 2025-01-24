@@ -14,7 +14,7 @@ const ReplyQuestion:FC<ReplyQuestionProps> = ({ question, changeCallback }) => {
             case "RADIO":
             case "CHECKBOX": {
                 return question.answers.map(answer => {
-                    return <div key={answer.id} className="mb-2">
+                    return <div key={answer.id} className="mb-2 ms-3">
                         <Form.Check
                             onChange={(e) => {
                                 const data: UserAnswer = {
@@ -34,7 +34,7 @@ const ReplyQuestion:FC<ReplyQuestionProps> = ({ question, changeCallback }) => {
                 });
             }
             case "SELECT": {
-                return <div className="mb-2">
+                return <div className="mb-2 ms-3">
                     <FormControl
                         as="select"
                         onChange={(e) => {
@@ -61,7 +61,7 @@ const ReplyQuestion:FC<ReplyQuestionProps> = ({ question, changeCallback }) => {
     
     return (
         <div className="mb-4">
-            <h6>{ question.content }</h6>
+            <h6>{ `${question.questionOrder}. ${question.content}` }</h6>
             { renderAnswers() }
         </div>
     )

@@ -22,11 +22,11 @@ const Answer:FC<AnswerProps> = ({ questionIndex, answerIndex }) => {
     const renderIcon = () => {
         switch(question.type) {
             case 'SELECT':
-                return <span className="me-1">{ answerIndex + 1 }.</span>
+                return <div className="me-1 "><span >{ answerIndex + 1 }.</span></div> 
             case 'RADIO':
-                return <Circle className="me-1"></Circle>
+                return <div className="me-1 "><Circle ></Circle></div>
             case 'CHECKBOX':
-                return <Square className="me-1"></Square>
+                return <div className="me-1 "><Square ></Square></div>
         }
     }
 
